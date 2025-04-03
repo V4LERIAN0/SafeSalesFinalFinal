@@ -2,6 +2,8 @@ package com.curso.ecommerce.controller;
 
 import java.util.List;
 
+import com.curso.ecommerce.model.Tienda;
+import com.curso.ecommerce.service.TiendaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,11 @@ import com.curso.ecommerce.service.ProductoService;
 @RequestMapping("/administrador")
 public class AdministradorController {
 
+//	@Autowired
+//	private ProductoService productoService;
+
 	@Autowired
-	private ProductoService productoService;
+	private TiendaService tiendaService;
 	
 	@Autowired
 	private IUsuarioService usuarioService;
@@ -35,8 +40,11 @@ public class AdministradorController {
 	@GetMapping("")
 	public String home(Model model) {
 
-		List<Producto> productos = productoService.findAll();
-		model.addAttribute("productos", productos);
+		List<Tienda> tiendas = tiendaService.findAll();
+		model.addAttribute("tiendas", tiendas);
+
+//		List<Producto> productos = productoService.findAll();
+//		model.addAttribute("productos", productos);
 
 
 		return "administrador/home";
