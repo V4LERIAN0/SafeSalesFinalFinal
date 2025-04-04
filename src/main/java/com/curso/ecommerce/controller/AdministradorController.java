@@ -1,8 +1,10 @@
 package com.curso.ecommerce.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.curso.ecommerce.model.Tienda;
+import com.curso.ecommerce.repository.IProductoRepository;
 import com.curso.ecommerce.service.TiendaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,8 @@ import com.curso.ecommerce.service.IOrdenService;
 import com.curso.ecommerce.service.IUsuarioService;
 import com.curso.ecommerce.service.ProductoService;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/administrador")
 public class AdministradorController {
@@ -31,25 +35,24 @@ public class AdministradorController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
-	
+	@Autowired
+	private ProductoService productoService;
 	@Autowired
 	private IOrdenService ordensService;
 	
 	private Logger logg= LoggerFactory.getLogger(AdministradorController.class);
 
 	@GetMapping("")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
+		Integer idUsuario = (Integer) session.getAttribute("idusuario");
 
-		List<Tienda> tiendas = tiendaService.findAll();
+		List<Tienda> tiendas = tiendaService.findByUsuarioId(idUsuario);
 		model.addAttribute("tiendas", tiendas);
-
-//		List<Producto> productos = productoService.findAll();
-//		model.addAttribute("productos", productos);
-
 
 		return "administrador/home";
 	}
-	
+
+
 	@GetMapping("/usuarios")
 	public String usuarios(Model model) {
 		model.addAttribute("usuarios", usuarioService.findAll());
@@ -71,6 +74,6 @@ public class AdministradorController {
 		
 		return "administrador/detalleorden";
 	}
-	
+
 	
 }

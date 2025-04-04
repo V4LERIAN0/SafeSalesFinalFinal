@@ -10,5 +10,6 @@ public interface TiendaService {
 	public void update(Tienda tienda);
 	public void delete(Integer id);
 	public List<Tienda> findAll();
+	List<Tienda> findByUsuarioId(Integer idUsuario);
 
 }

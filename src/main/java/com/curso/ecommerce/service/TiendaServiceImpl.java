@@ -17,6 +17,10 @@ private ITiendaRepository tiendaRepository;
 
 
 	@Override
+	public List<Tienda> findByUsuarioId(Integer idUsuario) {
+		return tiendaRepository.findByUsuarioId(idUsuario);
+	}
+	@Override
 	public Tienda save(Tienda tienda) {
 		return tiendaRepository.save(tienda);
 	}
@@ -42,4 +46,6 @@ private ITiendaRepository tiendaRepository;
 	public List<Tienda> findAll() {
 		return tiendaRepository.findAll();
 	}
+
+
 }
