@@ -17,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.curso.ecommerce.model.Producto;
+import com.curso.ecommerce.model.Tienda;
 import com.curso.ecommerce.model.Usuario;
 import com.curso.ecommerce.service.IUsuarioService;
 import com.curso.ecommerce.service.ProductoService;
 import com.curso.ecommerce.service.UploadFileService;
-import com.curso.ecommerce.service.UsuarioServiceImpl;
+import com.curso.ecommerce.service.TiendaServiceImpl;
 
 @Controller
 @RequestMapping("/productos")
@@ -34,7 +35,8 @@ public class ProductoController {
 	
 	@Autowired
 	private IUsuarioService usuarioService;
-	
+	@Autowired
+	private TiendaServiceImpl tiendaService;
 	@Autowired
 	private UploadFileService upload;
 	
@@ -43,11 +45,8 @@ public class ProductoController {
 		model.addAttribute("productos", productoService.findAll());
 		return "productos/show";
 	}
-	
-	@GetMapping("/create")
-	public String create() {
-		return "productos/create";
-	}
+
+
 	
 	@PostMapping("/save")
 	public String save(Producto producto, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
