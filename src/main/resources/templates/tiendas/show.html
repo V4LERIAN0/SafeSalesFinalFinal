@@ -30,12 +30,12 @@
 
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">
-    Spring eCommerce <small>Productos</small>
+    Spring eCommerce <small>Tiendas</small>
   </h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-    <li class="breadcrumb-item active">Ver Productos</li>
+    <li class="breadcrumb-item active">Ver Tiendas</li>
   </ol>
 
   <a class="btn btn-primary" th:href="@{/tiendas/create}" > Crear Tienda</a>
@@ -45,8 +45,6 @@
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
-        <th scope="col">Inventario</th>
-        <th scope="col">Precio</th>
         <th scope="col">Acción</th>
         <th scope="col">Acción</th>
       </tr>
@@ -55,8 +53,6 @@
       <tr th:each="tienda:${tiendas}">
         <td th:text="${tienda.nombre}"></td>
         <td th:text="${tienda.descripcion}"></td>
-        <td th:text="${tienda.cantidad}"></td>
-        <td th:text="${tienda.precio}"></td>
         <td><a  class="btn btn-warning" th:href="@{tiendas/edit/{id} (id=${tienda.id}) }">Editar</a> </td>
         <td><a  class="btn btn-danger" th:href="@{tiendas/delete/{id} (id=${tienda.id}) }">Eliminar</a> </td>
       </tr>       

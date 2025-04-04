@@ -45,7 +45,7 @@
 						<p class="card-text" th:text="${tienda.nombre}"></p>
 					</div>
 					<div class="card-footer">
-						<a href="productohome.html" class="btn btn-success">Entrar a la tienda</a>
+						<a th:href="@{/tiendas/{tiendaId}/productos(tiendaId=${tienda.id})}" class="btn btn-success">Entrar a la tienda</a>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,6 @@
 package com.curso.ecommerce.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "productos")
@@ -21,6 +16,10 @@ public class Producto {
 	
 	@ManyToOne
 	private Usuario usuario;
+
+	@ManyToOne
+	@JoinColumn(name = "tienda_id", nullable = false)
+	private Tienda tienda;
 	
 	public Producto() {
 
@@ -39,7 +38,13 @@ public class Producto {
 		this.usuario = usuario;
 	}
 
+	public Tienda getTienda() {
+		return tienda;
+	}
 
+	public void setTienda(Tienda tienda) {
+		this.tienda = tienda;
+	}
 
 	public Integer getId() {
 		return id;
