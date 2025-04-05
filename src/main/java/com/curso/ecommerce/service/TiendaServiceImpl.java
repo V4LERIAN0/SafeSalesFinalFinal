@@ -42,4 +42,9 @@ private ITiendaRepository tiendaRepository;
 	public List<Tienda> findAll() {
 		return tiendaRepository.findAll();
 	}
+
+	@Override
+	public List<Tienda> findByOwnerId(Integer ownerId) {
+		return tiendaRepository.findByOwnerId(ownerId);
+	}
 }

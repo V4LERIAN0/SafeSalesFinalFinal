@@ -19,6 +19,8 @@ import com.curso.ecommerce.service.IOrdenService;
 import com.curso.ecommerce.service.IUsuarioService;
 import com.curso.ecommerce.service.ProductoService;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/administrador")
 public class AdministradorController {
@@ -38,18 +40,14 @@ public class AdministradorController {
 	private Logger logg= LoggerFactory.getLogger(AdministradorController.class);
 
 	@GetMapping("")
-	public String home(Model model) {
-
-		List<Tienda> tiendas = tiendaService.findAll();
+	public String home(Model model, HttpSession session) {
+		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+		List<Tienda> tiendas = tiendaService.findByOwnerId(idUsuario);
 		model.addAttribute("tiendas", tiendas);
-
-//		List<Producto> productos = productoService.findAll();
-//		model.addAttribute("productos", productos);
-
-
 		return "administrador/home";
 	}
-	
+
+
 	@GetMapping("/usuarios")
 	public String usuarios(Model model) {
 		model.addAttribute("usuarios", usuarioService.findAll());

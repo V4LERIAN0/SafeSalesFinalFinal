@@ -56,11 +56,11 @@ public class HomeController {
 
 	@GetMapping("")
 	public String home(Model model, HttpSession session) {
-		
+
 		log.info("Sesion del usuario: {}", session.getAttribute("idusuario"));
-		
+
 		model.addAttribute("productos", productoService.findAll());
-		
+
 		//session
 		model.addAttribute("sesion", session.getAttribute("idusuario"));
 
@@ -81,32 +81,38 @@ public class HomeController {
 
 	@PostMapping("/cart")
 	public String addCart(@RequestParam Integer id, @RequestParam Integer cantidad, Model model) {
-		DetalleOrden detalleOrden = new DetalleOrden();
-		Producto producto = new Producto();
-		double sumaTotal = 0;
-
 		Optional<Producto> optionalProducto = productoService.get(id);
 		log.info("Producto añadido: {}", optionalProducto.get());
-		log.info("Cantidad: {}", cantidad);
-		producto = optionalProducto.get();
+		log.info("Cantidad recibida: {}", cantidad);
+		Producto producto = optionalProducto.get();
 
-		detalleOrden.setCantidad(cantidad);
-		detalleOrden.setPrecio(producto.getPrecio());
-		detalleOrden.setNombre(producto.getNombre());
-		detalleOrden.setTotal(producto.getPrecio() * cantidad);
-		detalleOrden.setProducto(producto);
-		
-		//validar que le producto no se añada 2 veces
-		Integer idProducto=producto.getId();
-		boolean ingresado=detalles.stream().anyMatch(p -> p.getProducto().getId()==idProducto);
-		
+		// Revisar si el producto está en el carro
+		Integer idProducto = producto.getId();
+		boolean ingresado = detalles.stream().anyMatch(dt -> dt.getProducto().getId().equals(idProducto));
+
 		if (!ingresado) {
+			// Crea una entrada nueva si no existía el producto en el carro
+			DetalleOrden detalleOrden = new DetalleOrden();
+			detalleOrden.setCantidad(cantidad);
+			detalleOrden.setPrecio(producto.getPrecio());
+			detalleOrden.setNombre(producto.getNombre());
+			detalleOrden.setTotal(producto.getPrecio() * cantidad);
+			detalleOrden.setProducto(producto);
 			detalles.add(detalleOrden);
+		} else {
+			// Incrementa la cantidad y calcula el total
+			for (DetalleOrden dt : detalles) {
+				if (dt.getProducto().getId().equals(idProducto)) {
+					dt.setCantidad(dt.getCantidad() + cantidad);
+					dt.setTotal(producto.getPrecio() * dt.getCantidad());
+				}
+			}
 		}
-		
-		sumaTotal = detalles.stream().mapToDouble(dt -> dt.getTotal()).sum();
 
+		// Recalcula el total
+		double sumaTotal = detalles.stream().mapToDouble(dt -> dt.getTotal()).sum();
 		orden.setTotal(sumaTotal);
+
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 
@@ -185,7 +191,7 @@ public class HomeController {
 		orden = new Orden();
 		detalles.clear();
 		
-		return "redirect:/";
+		return "redirect:/usuario/tiendas";
 	}
 	
 	@PostMapping("/search")

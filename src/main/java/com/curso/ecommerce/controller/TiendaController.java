@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.util.*;
 import java.util.Optional;
 
@@ -41,11 +42,14 @@ public class TiendaController {
     private ProductoService productoService;
 
 	@GetMapping("")
-	public String show(Model model) {
-		model.addAttribute("tiendas", tiendaService.findAll());
+	public String show(Model model, HttpSession session) {
+		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+		List<Tienda> tiendas = tiendaService.findByOwnerId(idUsuario);
+		model.addAttribute("tiendas", tiendas);
 		return "tiendas/show";
 	}
-	
+
+
 	@GetMapping("/create")
 	public String create() {
 		return "tiendas/create";
@@ -72,14 +76,17 @@ public class TiendaController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable Integer id, Model model) {
-		Tienda tienda= new Tienda();
-		Optional<Tienda> optionalTienda=tiendaService.get(id);
-		tienda= optionalTienda.get();
+	public String edit(@PathVariable Integer id, Model model, HttpSession session) throws AccessDeniedException {
+		Tienda tienda = tiendaService.get(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
-		LOGGER.info("tienda buscado: {}",tienda);
+		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+		if (!tienda.getOwner().getId().equals(idUsuario)) {
+			// You can throw an AccessDeniedException or handle it as you prefer
+			throw new AccessDeniedException("No tienes permiso para editar esta tienda");
+		}
+
 		model.addAttribute("tienda", tienda);
-
 		return "tiendas/edit";
 	}
 
@@ -105,30 +112,37 @@ public class TiendaController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
+	public String delete(@PathVariable Integer id, HttpSession session) throws AccessDeniedException {
+		Tienda tienda = tiendaService.get(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
-		Tienda p = new Tienda();
-		p=tiendaService.get(id).get();
+		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+		if (!tienda.getOwner().getId().equals(idUsuario)) {
+			throw new AccessDeniedException("No tienes permiso para eliminar esta tienda");
+		}
 
-		//eliminar cuando no sea la imagen por defecto
-		if (!p.getImagen().equals("default.jpg")) {
-			upload.deleteImage(p.getImagen());
+		if (!tienda.getImagen().equals("default.jpg")) {
+			upload.deleteImage(tienda.getImagen());
 		}
 
 		tiendaService.delete(id);
-		return "redirect:/Tiendas";
+		return "redirect:/tiendas";
 	}
 
+
 	@GetMapping("/{tiendaId}/productos")
-	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model) {
+	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model, HttpSession session) throws AccessDeniedException {
 		Tienda tienda = tiendaService.get(tiendaId)
 				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
-		List<Producto> productos = tienda.getProductos(); // Assuming the relationship is set up
+		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+		if (!tienda.getOwner().getId().equals(idUsuario)) {
+			throw new AccessDeniedException("No tienes permiso para ver esta tienda");
+		}
 
 		model.addAttribute("tienda", tienda);
-		model.addAttribute("productos", productos);
-		return "tiendas/productos"; // Make sure this Thymeleaf template exists
+		model.addAttribute("productos", tienda.getProductos());
+		return "tiendas/productos";
 	}
 
 	// In TiendaController.java

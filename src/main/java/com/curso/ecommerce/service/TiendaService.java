@@ -10,5 +10,7 @@ public interface TiendaService {
 	public void update(Tienda tienda);
 	public void delete(Integer id);
 	public List<Tienda> findAll();
-
+	public List<Tienda> findByOwnerId(Integer ownerId);
 }
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tiendas Disponibles</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+</head>
+<body>
+<!-- Header fragment (adjust the include as per your project) -->
+<div th:include="usuario/template_usuario.html :: header"></div>
+
+<div class="container">
+    <h1 class="mt-4 mb-3">Tiendas Disponibles</h1>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="tienda : ${tiendas}">
+            <div class="card h-100">
+                <a th:href="@{/usuario/tiendas/{tiendaId}/productos(tiendaId=${tienda.id})}">
+                    <img class="card-img-top" th:src="@{'/uploads/' + ${tienda.imagen}}" alt="Imagen de la tienda">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${tienda.nombre}">Nombre de la Tienda</h4>
+                    <p class="card-text" th:text="${tienda.descripcion}">Descripción</p>
+                </div>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(tiendas)}" class="col-12">
+            <p class="text-center">No hay tiendas disponibles.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer fragment -->
+<div th:include="usuario/template_usuario.html :: footer"></div>
+<!-- Bootstrap JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
