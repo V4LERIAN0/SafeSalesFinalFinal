@@ -19,7 +19,7 @@
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="tienda : ${tiendas}">
             <div class="card h-100">
                 <a th:href="@{/usuario/tiendas/{tiendaId}/productos(tiendaId=${tienda.id})}">
-                    <img class="card-img-top" th:src="@{'/uploads/' + ${tienda.imagen}}" alt="Imagen de la tienda">
+                    <img class="card-img-top" th:src="@{'/images/' + ${tienda.imagen}}" alt="Imagen de la tienda">
                 </a>
                 <div class="card-body">
                     <h4 class="card-title" th:text="${tienda.nombre}">Nombre de la Tienda</h4>
