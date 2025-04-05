@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import com.curso.ecommerce.exception.ResourceNotFoundException;
 import com.curso.ecommerce.model.Producto;
 import com.curso.ecommerce.model.Tienda;
+import com.curso.ecommerce.service.ProductoService;
 import com.curso.ecommerce.service.TiendaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,9 @@ public class UsuarioController {
 
 	@Autowired
 	private TiendaService TiendaService;
+
+	@Autowired
+	private ProductoService productoService;
 	
 	BCryptPasswordEncoder passEncode= new BCryptPasswordEncoder();
 	
@@ -52,7 +56,6 @@ public class UsuarioController {
 	@PostMapping("/save")
 	public String save(Usuario usuario) {
 		logger.info("Usuario registro: {}", usuario);
-		usuario.setTipo("USER");
 		usuario.setPassword( passEncode.encode(usuario.getPassword()));
 		usuarioService.save(usuario);
 		return "redirect:/";
@@ -77,7 +80,7 @@ public class UsuarioController {
 				return "redirect:/administrador";
 			} else {
 				// Redirect non-admin users to the new stores view
-				return "redirect:/usuario/tiendas";
+				return "redirect:/usuario";
 			}
 		} else {
 			logger.info("Usuario no existe");
@@ -85,6 +88,12 @@ public class UsuarioController {
 
 		return "redirect:/";
 	}
+
+	@GetMapping("")
+	public String dashboard() {
+		return "usuario/dashboard";
+	}
+
 
 	@GetMapping("/compras")
 	public String obtenerCompras(Model model, HttpSession session) {
@@ -133,5 +142,11 @@ public class UsuarioController {
 		model.addAttribute("tienda", tienda);
 		model.addAttribute("productos", productos);
 		return "usuario/productos_tiendas";  // This view shows the products of the store
+	}
+
+	@GetMapping("/productos")
+	public String allProducts(Model model) {
+		model.addAttribute("productos", productoService.findAll());
+		return "usuario/productos";    // Create this template next
 	}
 }

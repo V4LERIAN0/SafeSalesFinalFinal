@@ -5,10 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="I'm tirado">
+      <change afterPath="$PROJECT_DIR$/images/Store-PNG-Pic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/product-icon-png-0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/dashboard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/detalleorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/detalleorden.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/ordenes.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/ordenes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/productohome.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/productohome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/usuarios.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productos/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productos/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/AdministradorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/AdministradorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/usuarios.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/productos/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/productos/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +92,7 @@
     "git-widget-placeholder": "avances-casi-finales",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eliia/proyecto de inspiracion",
+    "last_opened_file_path": "C:/Users/eliia/proyecto de inspiracion/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,6 +101,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\eliia\proyecto de inspiracion\images" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="proyecto de inspiracion" />
@@ -127,7 +151,7 @@
       <workItem from="1743807969000" duration="1168000" />
       <workItem from="1743815493904" duration="8460000" />
       <workItem from="1743824825485" duration="5451000" />
-      <workItem from="1743874620522" duration="12413000" />
+      <workItem from="1743874620522" duration="16893000" />
     </task>
     <task id="LOCAL-00001" summary="Tiendas - productos">
       <option name="closed" value="true" />
@@ -169,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743886308730</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="I'm tirado">
+      <option name="closed" value="true" />
+      <created>1743890581335</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743890581335</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

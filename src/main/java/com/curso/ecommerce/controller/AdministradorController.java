@@ -48,12 +48,6 @@ public class AdministradorController {
 		return "administrador/home";
 	}
 
-	@GetMapping("/usuarios")
-	public String usuarios(Model model) {
-		model.addAttribute("usuarios", usuarioService.findAll());
-		return "administrador/usuarios";
-	}
-	
 	@GetMapping("/ordenes")
 	public String ordenes(Model model) {
 		model.addAttribute("ordenes", ordensService.findAll());

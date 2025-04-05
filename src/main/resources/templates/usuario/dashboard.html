@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bienvenido a SafeSales</title>
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+</head>
+<body>
+<!-- User header -->
+<div th:include="usuario/template_usuario.html :: header"></div>
+
+<div class="container text-center my-5">
+    <h1 class="mb-4">¿Qué quieres hacer hoy?</h1>
+    <div class="row">
+        <!-- Explore Stores -->
+        <div class="col-md-6 mb-4">
+            <a th:href="@{/usuario/tiendas}" class="btn btn-primary btn-lg btn-block py-4">
+                Quiero explorar tiendas
+            </a>
+            <img th:src="@{/images/Store-PNG-Pic.png}" class="img-fluid mt-3" alt="Explorar Tiendas">
+        </div>
+        <!-- Explore Products -->
+        <div class="col-md-6 mb-4">
+            <a th:href="@{/usuario/productos}" class="btn btn-secondary btn-lg btn-block py-4">
+                Quiero explorar productos
+            </a>
+            <img th:src="@{/images/product-icon-png-0.jpg}" class="img-fluid mt-3" alt="Explorar Productos">
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:include="usuario/template_usuario.html :: footer"></div>
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
