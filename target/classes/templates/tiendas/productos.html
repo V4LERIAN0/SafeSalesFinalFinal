@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SafeSales</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation -->
+<div th:include="administrador/template_admin.html::header"></div>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        SafeSales <small>Productos de la Tienda</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/tiendas}">Tiendas</a></li>
+        <li class="breadcrumb-item active" th:text="${tienda.nombre}">Nombre de la Tienda</li>
+    </ol>
+
+    <!-- Button to add a new product -->
+    <div class="mb-3">
+        <a th:href="@{/tiendas/{tiendaId}/productos/new(tiendaId=${tienda.id})}" class="btn btn-primary">
+            Agregar Producto
+        </a>
+    </div>
+
+    <!-- Table listing the products -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.nombre}">Nombre del Producto</td>
+                <td th:text="${producto.descripcion}">Descripción</td>
+                <td th:text="${producto.precio}">Precio</td>
+                <td th:text="${producto.cantidad}">Cantidad</td>
+                <td>
+                    <img th:src="@{'/uploads/' + ${producto.imagen}}" alt="Imagen" style="max-width:100px;">
+                </td>
+                <td>
+                    <!-- Example action buttons (edit, delete) -->
+                    <a th:href="@{/productos/edit/{id}(id=${producto.id})}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/productos/delete/{id}(id=${producto.id})}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Estás seguro?');">Eliminar</a>
+                </td>
+            </tr>
+            <!-- Message when no products exist -->
+            <tr th:if="${#lists.isEmpty(productos)}">
+                <td colspan="6" class="text-center">No hay productos para mostrar</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<div th:include="administrador/template_admin.html::footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title th:text="${tienda.nombre} + ' - Productos'">Productos de la Tienda</title>
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- Custom styles -->
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+</head>
+<body>
+<!-- Header fragment -->
+<div th:include="usuario/template_usuario.html :: header"></div>
+
+<div class="container">
+  <!-- Breadcrumbs -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a th:href="@{/usuario/tiendas}">Tiendas</a></li>
+    <li class="breadcrumb-item active" th:text="${tienda.nombre}">Nombre de la Tienda</li>
+  </ol>
+  <h1 class="mt-4 mb-3" th:text="${tienda.nombre}">Nombre de la Tienda</h1>
+  <p th:text="${tienda.descripcion}">Descripción de la Tienda</p>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="producto : ${productos}">
+      <div class="card h-100">
+        <a th:href="@{/productohome/{id}(id=${producto.id})}">
+          <img class="card-img-top" th:src="@{'/uploads/' + ${producto.imagen}}" alt="Imagen del producto">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title" th:text="${producto.nombre}">Nombre del Producto</h4>
+          <p class="card-text" th:text="${producto.descripcion}">Descripción del Producto</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted" th:text="${producto.precio}">Precio</small>
+        </div>
+      </div>
+    </div>
+    <div th:if="${#lists.isEmpty(productos)}" class="col-12">
+      <p class="text-center">No hay productos en esta tienda.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer fragment -->
+<div th:include="usuario/template_usuario.html :: footer"></div>
+<!-- Bootstrap JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
