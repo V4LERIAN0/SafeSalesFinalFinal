@@ -30,12 +30,12 @@
 
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">
-    Spring eCommerce <small>Tiendas</small>
+    SafeSales <small>Tiendas</small>
   </h1>
 
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-    <li class="breadcrumb-item active">Ver Tiendas</li>
+    <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+    <li class="breadcrumb-item active">Tiendas</li>
   </ol>
 
   <a class="btn btn-primary" th:href="@{/tiendas/create}" >Crear Tienda</a>
@@ -57,6 +57,10 @@
         <td><a  class="btn btn-danger" th:href="@{tiendas/delete/{id} (id=${tienda.id}) }">Eliminar</a> </td>
       </tr>       
     </tbody>
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+      <span th:text="${error}"></span>
+    </div>
+
   </table>
 
 </div>

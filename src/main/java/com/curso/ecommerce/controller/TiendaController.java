@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -92,58 +93,85 @@ public class TiendaController {
 
 	@PostMapping("/update")
 	public String update(Tienda tienda, @RequestParam("img") MultipartFile file ) throws IOException {
-		Tienda p= new Tienda();
-		p=tiendaService.get(tienda.getId()).get();
-
-		if (file.isEmpty()) { // editamos el producto pero no cambiamos la imagem
-
-			tienda.setImagen(p.getImagen());
-		}else {// cuando se edita tbn la imagen
-			//eliminar cuando no sea la imagen por defecto
-			if (!p.getImagen().equals("default.jpg")) {
-				upload.deleteImage(p.getImagen());
-			}
-			String nombreImagen= upload.saveImage(file);
-			tienda.setImagen(nombreImagen);
-		}
-		tienda.setOwner(p.getOwner());
-		tiendaService.update(tienda);
-		return "redirect:/productos";
-	}
-
-	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id, HttpSession session) throws AccessDeniedException {
-		Tienda tienda = tiendaService.get(id)
+		// Consigue los datos actuales de la tienda
+		Tienda p = tiendaService.get(tienda.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
-		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
-		if (!tienda.getOwner().getId().equals(idUsuario)) {
-			throw new AccessDeniedException("No tienes permiso para eliminar esta tienda");
+		// Si no hay imagen nueva, mantiene la vieja
+		if (file.isEmpty()) {
+			tienda.setImagen(p.getImagen());
+		} else {
+			// Si hay una imagen nueva que no es la original, la borra
+			if (p.getImagen() != null && !p.getImagen().equals("default.jpg")) {
+				upload.deleteImage(p.getImagen());
+			}
+			String nombreImagen = upload.saveImage(file);
+			tienda.setImagen(nombreImagen);
 		}
 
-		if (!tienda.getImagen().equals("default.jpg")) {
-			upload.deleteImage(tienda.getImagen());
-		}
+		tienda.setOwner(p.getOwner());
+		tienda.setProductos(p.getProductos());
 
-		tiendaService.delete(id);
+		// Actualiza la base de datos
+		tiendaService.update(tienda);
+
 		return "redirect:/tiendas";
 	}
 
 
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id, HttpSession session, RedirectAttributes redirectAttributes) {
+		// consigue la tienda
+		Tienda tienda = tiendaService.get(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
+
+		// Revisa si eres el propietario de la tienda a borrar
+		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+		if (!tienda.getOwner().getId().equals(idUsuario)) {
+			redirectAttributes.addFlashAttribute("error", "No tienes permiso para eliminar esta tienda");
+			return "redirect:/tiendas";
+		}
+
+		// Revisa si algún producto de la tienda está en los detalles de orden
+		for (Producto prod : tienda.getProductos()) {
+			if (prod.getDetalles() != null && !prod.getDetalles().isEmpty()) {
+				// Tira el error tipo "flash"
+				redirectAttributes.addFlashAttribute("error", "No se puede eliminar la tienda porque algunos productos están en órdenes.");
+				return "redirect:/tiendas";
+			}
+		}
+
+		// Borra la imagen
+		if (tienda.getImagen() != null && !tienda.getImagen().equals("default.jpg")) {
+			upload.deleteImage(tienda.getImagen());
+		}
+
+		// Elimina la tienda y si no se puede maneja los errores
+		try {
+			tiendaService.delete(id);
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("error", "Error al eliminar la tienda: " + e.getMessage());
+			return "redirect:/tiendas";
+		}
+		return "redirect:/tiendas";
+	}
+
 	@GetMapping("/{tiendaId}/productos")
-	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model, HttpSession session) throws AccessDeniedException {
+	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model, HttpSession session)
+			throws AccessDeniedException {
 		Tienda tienda = tiendaService.get(tiendaId)
 				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
 		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
-		if (!tienda.getOwner().getId().equals(idUsuario)) {
-			throw new AccessDeniedException("No tienes permiso para ver esta tienda");
-		}
+		boolean preview = tienda.getOwner().getId().equals(idUsuario);
 
 		model.addAttribute("tienda", tienda);
 		model.addAttribute("productos", tienda.getProductos());
-		return "tiendas/productos";
+		model.addAttribute("preview", preview); // cierto si el usuario logeado es el dueño
+
+		return "usuario/productos_tiendas";
 	}
+
 
 	// In TiendaController.java
 

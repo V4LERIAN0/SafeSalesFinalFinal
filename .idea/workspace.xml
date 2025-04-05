@@ -6,6 +6,34 @@
   <component name="ChangeListManager">
     <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="Versión antes de cambios finales">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/ProductoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/TiendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/TiendaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/model/DetalleOrden.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/model/DetalleOrden.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/model/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/detalleorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/detalleorden.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/ordenes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/ordenes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/template_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/template_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productos/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productos/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productohome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productohome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos_tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos_tiendas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/AdministradorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/AdministradorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/ProductoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/ProductoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/model/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/model/Producto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/template_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/template_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/productos/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/productos/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tiendas/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tiendas/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tiendas/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tiendas/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tiendas/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tiendas/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tiendas/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tiendas/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/productos_tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/productos_tiendas.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +152,7 @@
       <workItem from="1743807969000" duration="1168000" />
       <workItem from="1743815493904" duration="8460000" />
       <workItem from="1743824825485" duration="5451000" />
-      <workItem from="1743874620522" duration="713000" />
+      <workItem from="1743874620522" duration="10780000" />
     </task>
     <task id="LOCAL-00001" summary="Tiendas - productos">
       <option name="closed" value="true" />
@@ -150,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743875007088</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Versión antes de cambios finales">
+      <option name="closed" value="true" />
+      <created>1743875486506</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743875486506</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

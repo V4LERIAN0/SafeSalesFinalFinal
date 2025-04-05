@@ -1,6 +1,8 @@
 package com.curso.ecommerce.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "productos")
@@ -20,7 +22,10 @@ public class Producto {
 	@ManyToOne
 	@JoinColumn(name = "tienda_id", nullable = false)
 	private Tienda tienda;
-	
+
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+	private List<DetalleOrden> detalles = new ArrayList<>();
+
 	public Producto() {
 
 	}
@@ -37,6 +42,14 @@ public class Producto {
 		this.cantidad = cantidad;
 		this.usuario = usuario;
 	}
+
+	public List<DetalleOrden> getDetalles() {
+		return detalles;
+	}
+	public void setDetalles(List<DetalleOrden> detalles) {
+		this.detalles = detalles;
+	}
+
 
 	public Tienda getTienda() {
 		return tienda;

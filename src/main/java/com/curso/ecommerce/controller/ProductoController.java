@@ -79,42 +79,44 @@ public class ProductoController {
 		
 		return "productos/edit";
 	}
-	
+
 	@PostMapping("/update")
-	public String update(Producto producto, @RequestParam("img") MultipartFile file ) throws IOException {
-		Producto p= new Producto();
-		p=productoService.get(producto.getId()).get();
-		
-		if (file.isEmpty()) { // editamos el producto pero no cambiamos la imagem
-			
+	public String update(Producto producto, @RequestParam("img") MultipartFile file) throws IOException {
+		// Retrieve the existing product from the database
+		Producto p = productoService.get(producto.getId()).get();
+
+		// If no new file is uploaded, keep the current image; otherwise update it.
+		if (file.isEmpty()) {
 			producto.setImagen(p.getImagen());
-		}else {// cuando se edita tbn la imagen			
-			//eliminar cuando no sea la imagen por defecto
-			if (!p.getImagen().equals("default.jpg")) {
+		} else {
+			// If there is an existing image and it's not the default, delete it.
+			if (p.getImagen() != null && !p.getImagen().equals("default.jpg")) {
 				upload.deleteImage(p.getImagen());
 			}
-			String nombreImagen= upload.saveImage(file);
+			String nombreImagen = upload.saveImage(file);
 			producto.setImagen(nombreImagen);
 		}
-		producto.setUsuario(p.getUsuario());
-		productoService.update(producto);		
-		return "redirect:/productos";
+
+		// **Important:** Preserve the tienda association
+		producto.setTienda(p.getTienda());
+
+		// Update the product using your service
+		productoService.update(producto);
+		return "redirect:/administrador/admintienda/" + p.getTienda().getId();
 	}
-	
+
+
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
-		
-		Producto p = new Producto();
-		p=productoService.get(id).get();
-		
-		//eliminar cuando no sea la imagen por defecto
-		if (!p.getImagen().equals("default.jpg")) {
-			upload.deleteImage(p.getImagen());
+		Producto producto = productoService.get(id).get();
+
+		// Check if the image is not null and not the default image before deleting it.
+		if (producto.getImagen() != null && !producto.getImagen().equals("default.jpg")) {
+			upload.deleteImage(producto.getImagen());
 		}
-		
+
 		productoService.delete(id);
-		return "redirect:/productos";
+		// Redirect back to the store's product CRUD view. You may need to redirect to the correct tienda.
+		return "redirect:/administrador/admintienda/" + producto.getTienda().getId();
 	}
-	
-	
 }

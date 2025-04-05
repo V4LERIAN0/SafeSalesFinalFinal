@@ -2,6 +2,7 @@ package com.curso.ecommerce.controller;
 
 import java.util.List;
 
+import com.curso.ecommerce.exception.ResourceNotFoundException;
 import com.curso.ecommerce.model.Tienda;
 import com.curso.ecommerce.service.TiendaService;
 import org.slf4j.Logger;
@@ -47,7 +48,6 @@ public class AdministradorController {
 		return "administrador/home";
 	}
 
-
 	@GetMapping("/usuarios")
 	public String usuarios(Model model) {
 		model.addAttribute("usuarios", usuarioService.findAll());
@@ -69,6 +69,15 @@ public class AdministradorController {
 		
 		return "administrador/detalleorden";
 	}
-	
-	
+
+	@GetMapping("/admintienda/{id}")
+	public String adminTienda(@PathVariable("id") Integer id, Model model) {
+		Tienda tienda = tiendaService.get(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
+		List<Producto> productos = tienda.getProductos();
+		model.addAttribute("tienda", tienda);
+		model.addAttribute("productos", productos);
+		return "tiendas/productos"; // Create this Thymeleaf template
+	}
+
 }

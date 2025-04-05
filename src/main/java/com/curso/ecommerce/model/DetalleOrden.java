@@ -23,7 +23,7 @@ public class DetalleOrden {
 	
 	@ManyToOne
 	private Producto producto;
-	
+
 	public DetalleOrden() {
 	
 	}
