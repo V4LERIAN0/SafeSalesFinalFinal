@@ -2,37 +2,324 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bienvenido a SafeSales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSales - Tu tienda segura</title>
+
+    <!-- Bootstrap CSS -->
     <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+        }
+
+        /* Modern Header */
+        .modern-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.2);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modern-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .modern-header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline-white {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modern-header {
+                padding: 3rem 0;
+                border-radius: 0 0 20px 20px;
+            }
+
+            .header-title {
+                font-size: 2.2rem;
+            }
+
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-btn {
+                width: 100%;
+            }
+        }
+
+
+        .option-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            height: 100%;
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            position: relative;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.2);
+        }
+
+        .option-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, #f5f7ff 0%, #e6ebff 100%);
+            width: 100px;
+            height: 100px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover .option-icon {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .btn-option {
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+
+    </style>
 </head>
 <body>
 <!-- User header -->
 <div th:include="usuario/template_usuario.html :: header"></div>
 
-<div class="container text-center my-5">
-    <h1 class="mb-4">¿Qué quieres hacer hoy?</h1>
-    <div class="row">
-        <!-- Explore Stores -->
-        <div class="col-md-6 mb-4">
-            <a th:href="@{/usuario/tiendas}" class="btn btn-primary btn-lg btn-block py-4">
-                Quiero explorar tiendas
+<!-- Modern Header -->
+<header class="modern-header">
+    <div class="header-content">
+        <h1 class="header-title">Encuentra lo que necesitas en SafeSales</h1>
+        <p class="header-subtitle">La plataforma de compras seguras con los mejores productos y tiendas verificadas</p>
+        <div class="header-actions">
+            <a th:href="@{/usuario/tiendas}" class="header-btn btn-primary">
+                <i class="fas fa-store mr-2"></i> Explorar Tiendas
             </a>
-            <img th:src="@{/images/Store-PNG-Pic.png}" class="img-fluid mt-3" alt="Explorar Tiendas">
+            <a th:href="@{/usuario/productos}" class="header-btn btn-outline-white">
+                <i class="fas fa-search mr-2"></i> Buscar Productos
+            </a>
         </div>
-        <!-- Explore Products -->
-        <div class="col-md-6 mb-4">
-            <a th:href="@{/usuario/productos}" class="btn btn-secondary btn-lg btn-block py-4">
-                Quiero explorar productos
+    </div>
+</header>
+
+<!-- Options Cards -->
+<div class="row justify-content-center">
+    <!-- Explore Stores Card -->
+    <div class="col-lg-5 col-md-6 mb-4">
+        <div class="option-card">
+            <div class="option-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <h3>Explorar Tiendas</h3>
+            <p class="mb-4">Descubre las mejores tiendas asociadas con productos verificados y de alta calidad.</p>
+            <a th:href="@{/usuario/tiendas}" class="btn btn-primary btn-option">
+                <i class="fas fa-arrow-right mr-2"></i> Ver Tiendas
             </a>
-            <img th:src="@{/images/product-icon-png-0.jpg}" class="img-fluid mt-3" alt="Explorar Productos">
+        </div>
+    </div>
+
+    <!-- Explore Products Card -->
+    <div class="col-lg-5 col-md-6 mb-4">
+        <div class="option-card">
+            <div class="option-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h3>Explorar Productos</h3>
+            <p class="mb-4">Busca directamente entre nuestro catálogo con miles de opciones disponibles.</p>
+            <a th:href="@{/usuario/productos}" class="btn btn-secondary btn-option">
+                <i class="fas fa-arrow-right mr-2"></i> Ver Productos
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-container">
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+        <div class="col">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Compra Segura</h3>
+                <p>Protegemos todas tus transacciones con los más altos estándares de seguridad.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Envío Rápido</h3>
+                <p>Recibe tus productos en 24-48 horas con nuestro servicio de entrega express.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Calidad Garantizada</h3>
+                <p>Todos nuestros productos pasan por estrictos controles de calidad.</p>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Footer -->
 <div th:include="usuario/template_usuario.html :: footer"></div>
+
+<!-- Bootstrap JS -->
 <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>

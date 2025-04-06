@@ -1,96 +1,343 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Carrito de compras SafeSales">
+	<meta name="author" content="SafeSales">
 
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+	<title>Carrito de Compras - SafeSales</title>
 
-<title>SafeSales</title>
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Bootstrap core CSS -->
-<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+	<style>
+		:root {
+			--primary: #4361ee;
+			--primary-dark: #3a0ca3;
+			--secondary: #3f37c9;
+			--accent: #4cc9f0;
+			--light: #f8f9fa;
+			--dark: #212529;
+		}
 
+		body {
+			font-family: 'Poppins', sans-serif;
+			background-color: #f8fafc;
+			color: var(--dark);
+			padding-top: 0;
+		}
+
+		/* Hero Section similar a home */
+		.cart-hero {
+			background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+			color: white;
+			padding: 6rem 0 4rem 0;
+			border-radius: 0 0 30px 30px;
+			margin-bottom: 3rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.cart-hero::before {
+			content: '';
+			position: absolute;
+			top: -100px;
+			right: -100px;
+			width: 300px;
+			height: 300px;
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 50%;
+		}
+
+		.cart-hero::after {
+			content: '';
+			position: absolute;
+			bottom: -50px;
+			left: -50px;
+			width: 200px;
+			height: 200px;
+			background: rgba(255, 255, 255, 0.03);
+			border-radius: 50%;
+		}
+
+		.cart-hero-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.cart-hero-title {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 800;
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.breadcrumb {
+			background-color: transparent;
+			padding: 0.5rem 1rem;
+			border-radius: 50px;
+			display: inline-flex;
+			background: rgba(255,255,255,0.1);
+		}
+
+		.breadcrumb-item a {
+			color: white;
+			opacity: 0.8;
+		}
+
+		.breadcrumb-item.active {
+			color: white;
+			opacity: 1;
+		}
+
+		.breadcrumb-item+.breadcrumb-item::before {
+			color: white;
+			opacity: 0.5;
+		}
+
+		/* Cart Content */
+		.cart-container {
+			background: white;
+			border-radius: 12px;
+			box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+			padding: 2rem;
+			margin-bottom: 3rem;
+			margin-top: -50px;
+			position: relative;
+			z-index: 10;
+		}
+
+		.cart-table {
+			width: 100%;
+		}
+
+		.cart-table thead th {
+			border-bottom: 2px solid #eee;
+			font-weight: 600;
+			color: var(--dark);
+			padding: 1rem;
+		}
+
+		.cart-table tbody tr {
+			border-bottom: 1px solid #f5f5f5;
+		}
+
+		.cart-table tbody tr:last-child {
+			border-bottom: none;
+		}
+
+		.cart-table td {
+			padding: 1.5rem 1rem;
+			vertical-align: middle;
+		}
+
+		.product-name {
+			font-weight: 500;
+			color: var(--dark);
+		}
+
+		.product-price, .product-total {
+			font-weight: 600;
+			color: var(--dark);
+		}
+
+		.product-quantity {
+			font-weight: 500;
+		}
+
+		.btn-remove {
+			background-color: #f8f9fa;
+			color: #dc3545;
+			border: none;
+			border-radius: 50px;
+			padding: 0.5rem 1rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-remove:hover {
+			background-color: #dc3545;
+			color: white;
+		}
+
+		.summary-card {
+			background-color: #f8f9fa;
+			border-radius: 12px;
+			padding: 2rem;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+		}
+
+		.summary-title {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			color: var(--primary);
+			margin-bottom: 1.5rem;
+			font-size: 1.5rem;
+		}
+
+		.subtotal {
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: var(--dark);
+			margin-bottom: 1.5rem;
+		}
+
+		.btn-checkout {
+			background-color: var(--primary);
+			color: white;
+			border: none;
+			border-radius: 50px;
+			padding: 0.8rem 2rem;
+			font-weight: 600;
+			width: 100%;
+			transition: all 0.3s ease;
+		}
+
+		.btn-checkout:hover {
+			background-color: var(--primary-dark);
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+		}
+
+		.empty-cart {
+			text-align: center;
+			padding: 4rem 0;
+		}
+
+		.empty-cart-icon {
+			font-size: 5rem;
+			color: #e2e8f0;
+			margin-bottom: 1.5rem;
+		}
+
+		.empty-cart-text {
+			font-size: 1.2rem;
+			color: #64748b;
+			margin-bottom: 2rem;
+		}
+
+		.btn-continue {
+			background-color: var(--primary);
+			color: white;
+			border: none;
+			border-radius: 50px;
+			padding: 0.8rem 2rem;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+
+		.btn-continue:hover {
+			background-color: var(--primary-dark);
+			color: white;
+		}
+
+		@media (max-width: 768px) {
+			.cart-hero {
+				padding: 5rem 0 3rem 0;
+				border-radius: 0 0 20px 20px;
+			}
+
+			.cart-hero-title {
+				font-size: 2rem;
+			}
+
+			.cart-container {
+				margin-top: -30px;
+			}
+		}
+	</style>
 </head>
 
 <body>
 
-	<!-- Navigation -->
-	<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">
+<!-- Navigation -->
+<div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}"></div>
+<div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"></div>
+
+<!-- Hero Section similar a home -->
+<section class="cart-hero">
+	<div class="container cart-hero-content">
+		<h1 class="cart-hero-title">Mi Carrito</h1>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/usuario}">Inicio</a></li>
+				<li class="breadcrumb-item active">Carrito</li>
+			</ol>
+		</nav>
 	</div>
+</section>
 
-	<div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
+<!-- Cart Content -->
+<div class="container">
+	<div th:if="${not #lists.isEmpty(cart)}" class="cart-container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="table-responsive">
+					<table class="cart-table">
+						<thead>
+						<tr>
+							<th>Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th>Total</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr th:each="dorden:${cart}">
+							<td class="product-name" th:text="${dorden.nombre}"></td>
+							<td class="product-price" th:text="${'S/ ' + dorden.precio}"></td>
+							<td class="product-quantity" th:text="${dorden.cantidad}"></td>
+							<td class="product-total" th:text="${'S/ ' + dorden.total}"></td>
+							<td>
+								<a th:href="@{/delete/cart/{id} (id=${dorden.producto.id})}" class="btn btn-remove">
+									<i class="fas fa-trash-alt"></i>
+								</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-	<!-- Page Content -->
-	<div class="container">
-		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">
-			SafeSales <small>Carrito</small>
-		</h1>
-
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a th:href="@{/usuario}">Inicio</a></li>
-			<li class="breadcrumb-item active">Carrito</li>
-		</ol>
-
-		<!-- Blog Post -->
-		<div class="card mb-4">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-lg-9">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Producto</th>
-									<th scope="col">Precio</th>
-									<th scope="col">Cantidad</th>
-									<th scope="col">Total</th>
-									<th scope="col">Acción</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="dorden:${cart}">
-									<td th:text="${dorden.nombre}"></td>
-									<td th:text="${dorden.precio}"></td>
-									<td th:text="${dorden.cantidad}"></td>
-									<td th:text="${dorden.total}"></td>
-									<td><a th:href="@{/delete/cart/{id}   (id=${dorden.producto.id}) }" class="btn btn-danger">Quitar</a></td>
-								</tr>
-							</tbody>
-						</table>
+			<div class="col-lg-4">
+				<div class="summary-card">
+					<h3 class="summary-title">Resumen de Compra</h3>
+					<div class="d-flex justify-content-between align-items-center mb-4">
+						<span class="font-weight-bold">Subtotal:</span>
+						<span class="subtotal" th:text="${'S/ ' + orden.total}"></span>
 					</div>
-
-					<div class="col-lg-3">
-						<h2 class="card-title">SUBTOTAL</h2>
-
-						<ul class="list-group">
-							<li class="list-group-item"><h5 th:text="${orden.total}"></h5></li>
-							<a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
-						</ul>
-					</div>
-
-
+					<a th:href="@{/order}" class="btn btn-checkout">
+						Proceder al Pago <i class="fas fa-arrow-right ml-2"></i>
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- /.container -->
 
-	<!-- Footer -->
-	<div th:include="usuario/template_usuario.html::footer"></div>
+	<div th:if="${#lists.isEmpty(cart)}" class="empty-cart">
+		<div class="empty-cart-icon">
+			<i class="fas fa-shopping-cart"></i>
+		</div>
+		<h3>Tu carrito está vacío</h3>
+		<p class="empty-cart-text">Añade algunos productos para comenzar</p>
+		<a th:href="@{/usuario}" class="btn btn-continue">
+			<i class="fas fa-store mr-2"></i> Continuar Comprando
+		</a>
+	</div>
+</div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Footer -->
+<div th:include="usuario/template_usuario.html::footer"></div>
 
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
-
 </html>

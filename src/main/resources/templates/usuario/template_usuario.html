@@ -1,103 +1,307 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Plataforma de compras seguras SafeSales">
+	<meta name="author" content="SafeSales">
 
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+	<title>SafeSales - Tu tienda en línea segura</title>
 
-<title>Spring eCommerce</title>
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Bootstrap core CSS -->
-<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link th:href="@{css/heroic-features.css}" rel="stylesheet">
+	<style>
+		:root {
+			--primary: #4361ee;
+			--primary-dark: #3a0ca3;
+			--secondary: #3f37c9;
+			--accent: #4cc9f0;
+			--light: #f8f9fa;
+			--dark: #212529;
+		}
 
+		body {
+			font-family: 'Poppins', sans-serif;
+			padding-top: 80px;
+			background-color: #f8fafc;
+		}
+
+		/* Modern Navbar */
+		.navbar {
+			box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+			background-color: white !important;
+			padding: 0.8rem 0;
+		}
+
+		.navbar-brand {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: 1.5rem;
+			color: var(--primary) !important;
+		}
+
+		.navbar-dark .navbar-nav .nav-link {
+			color: var(--dark) !important;
+			font-weight: 500;
+			padding: 0.5rem 1rem;
+			transition: all 0.3s ease;
+		}
+
+		.navbar-dark .navbar-nav .nav-link:hover {
+			color: var(--primary) !important;
+		}
+
+		.search-form {
+			margin: 0 1rem;
+			width: 100%;
+			max-width: 500px;
+		}
+
+		.search-input {
+			border-radius: 50px !important;
+			padding: 0.5rem 1.5rem;
+			border: 1px solid #e2e8f0;
+			transition: all 0.3s ease;
+		}
+
+		.search-input:focus {
+			border-color: var(--primary);
+			box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+		}
+
+		.btn-search {
+			border-radius: 50px !important;
+			padding: 0.5rem 1.5rem;
+			margin-left: -50px;
+			background-color: var(--primary);
+			border-color: var(--primary);
+			transition: all 0.3s ease;
+		}
+
+		.btn-search:hover {
+			background-color: var(--primary-dark);
+			border-color: var(--primary-dark);
+		}
+
+		.nav-item {
+			margin-left: 0.5rem;
+		}
+
+		.nav-item .nav-link {
+			display: flex;
+			align-items: center;
+		}
+
+		.nav-item .nav-link i {
+			margin-right: 0.5rem;
+		}
+
+		/* Modern Footer */
+		.footer {
+			background-color: var(--dark);
+			color: white;
+			padding: 2.5rem 0;
+			margin-top: 3rem;
+		}
+
+		.footer p {
+			margin-bottom: 0;
+			font-size: 0.9rem;
+		}
+
+		/* Responsive Adjustments */
+		@media (max-width: 992px) {
+			.search-form {
+				margin: 1rem 0;
+				order: 3;
+				width: 100%;
+			}
+
+			.navbar-collapse {
+				order: 2;
+			}
+		}
+	</style>
 </head>
 
 <body>
 
-	<!-- Navigation -->
-	<div th:fragment="header">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-			<div class="container">
-				<a class="navbar-brand" th:href="@{/usuario}">SafeSales</a>
-
-				<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Buscar" aria-label="Search" name="nombre"
-						autocomplete="off">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-				</form>
-
-
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarResponsive" aria-controls="navbarResponsive"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" th:href="@{/getCart}">Carrito</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/usuario/login}">Salir</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-	</div>
-	
-	
-	<!-- Navigation -->
-<div th:fragment="header-user">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<!-- Navigation -->
+<div th:fragment="header">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 		<div class="container">
-			<a class="navbar-brand" th:href="@{/usuario}">SafeSales</a>
-
-			<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
-				<input class="form-control mr-sm-2" type="search"
-					   placeholder="Buscar" aria-label="Search" name="nombre"
-					   autocomplete="off">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-			</form>
-
+			<a class="navbar-brand" th:href="@{/usuario}">
+				<i class="fas fa-shield-alt mr-2"></i>SafeSales
+			</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
+<!--			<form class="form-inline search-form" method="post" th:action="@{/search}">-->
+<!--				<input class="form-control search-input" type="search"-->
+<!--					   placeholder="Buscar productos..." aria-label="Search" name="nombre"-->
+<!--					   autocomplete="off">-->
+<!--				<button class="btn btn-primary btn-search" type="submit">-->
+<!--					<i class="fas fa-search"></i>-->
+<!--				</button>-->
+<!--			</form>-->
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" th:href="@{/usuario/login}">Salir</a></li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/getCart}">
+							<i class="fas fa-shopping-cart"></i> Carrito
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/usuario/login}">
+							<i class="fas fa-sign-out-alt"></i> Salir
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </div>
 
+<!-- Navigation for logged-in user -->
+<div th:fragment="header-user">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/usuario}">
+				<i class="fas fa-shield-alt mr-2"></i>SafeSales
+			</a>
 
-	<!-- Footer -->
-	<div th:fragment="footer">
-		<footer class="py-5 bg-dark">
-			<div class="container">
-				<p class="m-0 text-center text-white">Copyright &copy; SafeSales 2025</p>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<form class="form-inline search-form" method="post" th:action="@{/search}">
+				<input class="form-control search-input" type="search"
+					   placeholder="Buscar productos..." aria-label="Search" name="nombre"
+					   autocomplete="off">
+				<button class="btn btn-primary btn-search" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/usuario/login}">
+							<i class="fas fa-sign-out-alt"></i> Salir
+						</a>
+					</li>
+				</ul>
 			</div>
-			<!-- /.container -->
-		</footer>
+		</div>
+	</nav>
+</div>
 
-	</div>
+<!-- Footer -->
+<div th:fragment="footer">
+	<footer class="footer" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 2.5rem 0;">
+		<div class="container text-center">
+			<p class="m-0">© 2025 SafeSales User. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+</div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
-	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<style>
+	:root {
+		--primary: #4361ee;
+		--primary-dark: #3a0ca3;
+	}
 
+	.search-form {
+		margin: 0 1rem;
+		width: 100%;
+		max-width: 500px;
+	}
+
+	.search-input {
+		border-radius: 50px !important;
+		padding: 0.5rem 1.5rem;
+		border: 1px solid rgba(255,255,255,0.2);
+		background: rgba(255,255,255,0.1);
+		color: white;
+		transition: all 0.3s ease;
+	}
+
+	.search-input::placeholder {
+		color: rgba(255,255,255,0.6);
+	}
+
+	.search-input:focus {
+		background: rgba(255,255,255,0.2);
+		color: white;
+		box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.1);
+		border-color: rgba(255,255,255,0.3);
+	}
+
+	.btn-search {
+		border-radius: 50px !important;
+		padding: 0.5rem 1.5rem;
+		margin-left: -50px;
+		background-color: rgba(255,255,255,0.2);
+		border: none;
+		color: white;
+		transition: all 0.3s ease;
+	}
+
+	.btn-search:hover {
+		background-color: rgba(255,255,255,0.3);
+	}
+
+	.dropdown-menu {
+		border: none;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+		padding: 0.5rem 0;
+	}
+
+	.dropdown-item {
+		padding: 0.5rem 1.5rem;
+		transition: all 0.2s ease;
+	}
+
+	.dropdown-item:hover {
+		background-color: #f8f9fa;
+		color: var(--primary);
+	}
+
+	.dropdown-divider {
+		border-color: #eee;
+		margin: 0.5rem 0;
+	}
+
+	@media (max-width: 992px) {
+		.search-form {
+			margin: 1rem 0;
+			order: 3;
+			width: 100%;
+		}
+
+		.navbar-collapse {
+			order: 2;
+		}
+	}
+</style>
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
-
 </html>

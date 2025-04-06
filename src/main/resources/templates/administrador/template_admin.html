@@ -1,52 +1,142 @@
 <!-- Navigation -->
 <div th:fragment="header">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); box-shadow: 0 2px 15px rgba(0,0,0,0.1);">
 		<div class="container">
-			<a class="navbar-brand" th:href="@{/administrador}">SafeSales</a>
+			<a class="navbar-brand" th:href="@{/administrador}" style="font-family: 'Montserrat', sans-serif; font-weight: 700;">
+				<i class="fas fa-shield-alt mr-2"></i>SafeSales Admin
+			</a>
 
-			<form class="form-inline my-2 my-lg-0" method="post" action="#">
-				<input class="form-control mr-sm-2" type="search"
-					placeholder="Buscar" aria-label="Search" name="nombre"
-					autocomplete="off">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			<form class="form-inline search-form" method="post" action="#">
+				<input class="form-control search-input" type="search"
+					   placeholder="Buscar tiendas..." aria-label="Search" name="nombre"
+					   autocomplete="off">
+				<button class="btn btn-search" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
 			</form>
 
-
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> Administrar </a>
-							
-							<div class="dropdown-menu"
-								aria-labelledby="navbarDropdownMenuLink">
-								<a class="dropdown-item" th:href="@{/tiendas}">Mis tiendas</a>
-								<a class="dropdown-item" th:href="@{/productos}">Mis productos</a>
-								<a class="dropdown-item" th:href="@{/administrador/ordenes}">Órdenes</a>
-								<a class="dropdown-item" th:href="@{/usuario/cerrar}">Salir</a>
-							</div></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+						   id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-user-cog mr-2"></i> Administrar
+						</a>
+						<div class="dropdown-menu dropdown-menu-right"
+							 aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/tiendas}">
+								<i class="fas fa-store mr-2"></i> Mis tiendas
+							</a>
+							<a class="dropdown-item" th:href="@{/productos}">
+								<i class="fas fa-boxes mr-2"></i> Mis productos
+							</a>
+							<a class="dropdown-item" th:href="@{/administrador/ordenes}">
+								<i class="fas fa-clipboard-list mr-2"></i> Órdenes
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/usuario/cerrar}">
+								<i class="fas fa-sign-out-alt mr-2"></i> Salir
+							</a>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-
 </div>
-
-
 
 <!-- Footer -->
 <div th:fragment="footer">
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; SafeSales 2025</p>
+	<footer class="footer" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; padding: 2.5rem 0;">
+		<div class="container text-center">
+			<p class="m-0">© 2025 SafeSales Admin. Todos los derechos reservados.</p>
 		</div>
-		<!-- /.container -->
 	</footer>
-
 </div>
+
+<style>
+	:root {
+		--primary: #4361ee;
+		--primary-dark: #3a0ca3;
+	}
+
+	.search-form {
+		margin: 0 1rem;
+		width: 100%;
+		max-width: 500px;
+	}
+
+	.search-input {
+		border-radius: 50px !important;
+		padding: 0.5rem 1.5rem;
+		border: 1px solid rgba(255,255,255,0.2);
+		background: rgba(255,255,255,0.1);
+		color: white;
+		transition: all 0.3s ease;
+	}
+
+	.search-input::placeholder {
+		color: rgba(255,255,255,0.6);
+	}
+
+	.search-input:focus {
+		background: rgba(255,255,255,0.2);
+		color: white;
+		box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.1);
+		border-color: rgba(255,255,255,0.3);
+	}
+
+	.btn-search {
+		border-radius: 50px !important;
+		padding: 0.5rem 1.5rem;
+		margin-left: -50px;
+		background-color: rgba(255,255,255,0.2);
+		border: none;
+		color: white;
+		transition: all 0.3s ease;
+	}
+
+	.btn-search:hover {
+		background-color: rgba(255,255,255,0.3);
+	}
+
+	.dropdown-menu {
+		border: none;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+		padding: 0.5rem 0;
+	}
+
+	.dropdown-item {
+		padding: 0.5rem 1.5rem;
+		transition: all 0.2s ease;
+	}
+
+	.dropdown-item:hover {
+		background-color: #f8f9fa;
+		color: var(--primary);
+	}
+
+	.dropdown-divider {
+		border-color: #eee;
+		margin: 0.5rem 0;
+	}
+
+	@media (max-width: 992px) {
+		.search-form {
+			margin: 1rem 0;
+			order: 3;
+			width: 100%;
+		}
+
+		.navbar-collapse {
+			order: 2;
+		}
+	}
+</style>

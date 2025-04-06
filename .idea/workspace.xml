@@ -5,10 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="Ya casiiiii">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/ProductoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/TiendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/TiendaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/template_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/template_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/resumenorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/resumenorden.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/ProductoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/ProductoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/template_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/template_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/compras.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/compras.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/resumenorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/resumenorden.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
