@@ -4,31 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="Ya casiiiii">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="Actualizacion de las vistas">
+      <change afterPath="$PROJECT_DIR$/images/images (2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/naturaleza.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/template_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/template_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/resumenorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/resumenorden.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/show.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/ProductoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/ProductoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/template_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/template_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/compras.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/compras.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/resumenorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/resumenorden.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743908785002</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Actualizacion de las vistas">
+      <option name="closed" value="true" />
+      <created>1743917294164</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743917294164</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +238,7 @@
     <MESSAGE value="Versión antes de cambios finales" />
     <MESSAGE value="I'm tirado" />
     <MESSAGE value="Ya casiiiii" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ya casiiiii" />
+    <MESSAGE value="Actualizacion de las vistas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizacion de las vistas" />
   </component>
 </project>
