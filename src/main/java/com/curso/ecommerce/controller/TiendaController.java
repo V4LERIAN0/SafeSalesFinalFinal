@@ -158,29 +158,22 @@ public class TiendaController {
 
 	@GetMapping("/{tiendaId}/productos")
 	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model, HttpSession session) {
-		// Retrieve the store
 		Tienda tienda = tiendaService.get(tiendaId)
 				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
-		// Get the logged in user’s ID
+		// Saca el ID del usuario loggeado
 		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
 
-		// Set preview flag: if the logged-in user is the owner, they are previewing
+		// Marca si es el preview o no
 		boolean preview = tienda.getOwner().getId().equals(idUsuario);
 
-		// Add attributes to the model
 		model.addAttribute("tienda", tienda);
 		model.addAttribute("productos", tienda.getProductos());
 		model.addAttribute("preview", preview);
 
-		return "tiendas/productos";  // This template will show the products
+		return "tiendas/productos";
 	}
 
-
-
-	// In TiendaController.java
-
-	// Display the product creation form for a given store
 	@GetMapping("/{tiendaId}/productos/new")
 	public String showProductForm(@PathVariable("tiendaId") Integer tiendaId, Model model) {
 		Tienda tienda = tiendaService.get(tiendaId)
@@ -190,30 +183,18 @@ public class TiendaController {
 		return "productos/form";  // Ensure you have this template or adjust the name accordingly
 	}
 
-	// Process the product creation form submission
 	@PostMapping("/{tiendaId}/productos")
 	public String saveProduct(@PathVariable("tiendaId") Integer tiendaId, @ModelAttribute Producto producto, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
-		// Retrieve the store from the tiendaService
 		Tienda tienda = tiendaService.get(tiendaId)
 				.orElseThrow(() -> new ResourceNotFoundException("No se encontró la tienda"));
 
-		// Associate the product with this store
+		// Asocia a este producto con la tienda
 		producto.setTienda(tienda);
-
-		// Optionally, set the user (if needed):
-		// Usuario usuario = usuarioService.findById(...).get();
-		// producto.setUsuario(usuario);
-
-		// Save the image if necessary (using your UploadFileService)
 		if (!file.isEmpty()) {
 			String nombreImagen = upload.saveImage(file);
 			producto.setImagen(nombreImagen);
 		}
-
-		// Save the product (using your existing ProductoService or repository)
 		productoService.save(producto);
-
-		// Redirect back to the store's products list
 		return "redirect:/tiendas/" + tiendaId + "/productos";
 	}
 

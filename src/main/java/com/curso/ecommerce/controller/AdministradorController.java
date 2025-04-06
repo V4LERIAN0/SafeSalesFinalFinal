@@ -71,7 +71,7 @@ public class AdministradorController {
 		List<Producto> productos = tienda.getProductos();
 		model.addAttribute("tienda", tienda);
 		model.addAttribute("productos", productos);
-		return "tiendas/productos"; // Create this Thymeleaf template
+		return "tiendas/productos";
 	}
 
 }

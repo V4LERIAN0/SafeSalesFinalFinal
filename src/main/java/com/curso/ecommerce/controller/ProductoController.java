@@ -57,7 +57,7 @@ public class ProductoController {
 		producto.setUsuario(u);	
 		
 		//imagen
-		if (producto.getId()==null) { // cuando se crea un producto
+		if (producto.getId()==null) {
 			String nombreImagen= upload.saveImage(file);
 			producto.setImagen(nombreImagen);
 		}else {
@@ -82,14 +82,14 @@ public class ProductoController {
 
 	@PostMapping("/update")
 	public String update(Producto producto, @RequestParam("img") MultipartFile file) throws IOException {
-		// Retrieve the existing product from the database
+		// saca el producto de la base de datos
 		Producto p = productoService.get(producto.getId()).get();
 
-		// If no new file is uploaded, keep the current image; otherwise update it.
+		// Mantiene la imagen actual si no hay una nueva
 		if (file.isEmpty()) {
 			producto.setImagen(p.getImagen());
 		} else {
-			// If there is an existing image and it's not the default, delete it.
+			// Si hay una imagen, que no sea la default, la borra
 			if (p.getImagen() != null && !p.getImagen().equals("default.jpg")) {
 				upload.deleteImage(p.getImagen());
 			}
@@ -97,10 +97,8 @@ public class ProductoController {
 			producto.setImagen(nombreImagen);
 		}
 
-		// **Important:** Preserve the tienda association
 		producto.setTienda(p.getTienda());
 
-		// Update the product using your service
 		productoService.update(producto);
 		return "redirect:/administrador/admintienda/" + p.getTienda().getId();
 	}
@@ -110,13 +108,13 @@ public class ProductoController {
 	public String delete(@PathVariable Integer id) {
 		Producto producto = productoService.get(id).get();
 
-		// Check if the image is not null and not the default image before deleting it.
+		// Revisa que la imagen no sea la de default antes de borrarla pues no queremos borrar la imagen default
 		if (producto.getImagen() != null && !producto.getImagen().equals("default.jpg")) {
 			upload.deleteImage(producto.getImagen());
 		}
 
 		productoService.delete(id);
-		// Redirect back to the store's product CRUD view. You may need to redirect to the correct tienda.
+
 		return "redirect:/administrador/admintienda/" + producto.getTienda().getId();
 	}
 }

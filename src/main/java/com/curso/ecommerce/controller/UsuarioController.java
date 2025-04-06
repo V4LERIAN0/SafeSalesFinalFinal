@@ -79,7 +79,7 @@ public class UsuarioController {
 			if (user.get().getTipo().equals("ADMIN")) {
 				return "redirect:/administrador";
 			} else {
-				// Redirect non-admin users to the new stores view
+				// Redirige a los que no son admin a la vista no admin
 				return "redirect:/usuario";
 			}
 		} else {
@@ -129,9 +129,9 @@ public class UsuarioController {
 
 	@GetMapping("/tiendas")
 	public String showStores(Model model) {
-		List<Tienda> tiendas = TiendaService.findAll(); // or add any filtering if needed
+		List<Tienda> tiendas = TiendaService.findAll();
 		model.addAttribute("tiendas", tiendas);
-		return "usuario/tiendas";  // This view will display the store cards
+		return "usuario/tiendas";
 	}
 
 	@GetMapping("/tiendas/{tiendaId}/productos")
@@ -141,12 +141,12 @@ public class UsuarioController {
 		List<Producto> productos = tienda.getProductos();
 		model.addAttribute("tienda", tienda);
 		model.addAttribute("productos", productos);
-		return "usuario/productos_tiendas";  // This view shows the products of the store
+		return "usuario/productos_tiendas";
 	}
 
 	@GetMapping("/productos")
 	public String allProducts(Model model) {
 		model.addAttribute("productos", productoService.findAll());
-		return "usuario/productos";    // Create this template next
+		return "usuario/productos";
 	}
 }
