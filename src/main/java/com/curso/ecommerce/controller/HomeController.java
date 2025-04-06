@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
+import com.curso.ecommerce.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,16 +67,23 @@ public class HomeController {
 	}
 
 	@GetMapping("productohome/{id}")
-	public String productoHome(@PathVariable Integer id, Model model) {
-		log.info("Id producto enviado como parámetro {}", id);
-		Producto producto = new Producto();
-		Optional<Producto> productoOptional = productoService.get(id);
-		producto = productoOptional.get();
-
+	public String productoHome(@PathVariable Integer id, Model model, HttpSession session) {
+		Producto producto = productoService.get(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado"));
 		model.addAttribute("producto", producto);
+
+		boolean preview = false;
+		if (session.getAttribute("idusuario") != null &&
+				producto.getTienda() != null &&
+				producto.getTienda().getOwner() != null) {
+			int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+			preview = producto.getTienda().getOwner().getId().equals(idUsuario);
+		}
+		model.addAttribute("preview", preview);
 
 		return "usuario/productohome";
 	}
+
 
 	@PostMapping("/cart")
 	public String addCart(@RequestParam Integer id, @RequestParam Integer cantidad, Model model) {

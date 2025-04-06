@@ -16,7 +16,8 @@
 <body>
 
 <!-- Navigation -->
-<div th:include="administrador/template_admin.html::header"></div>
+<div th:if="${preview}" th:replace="administrador/template_admin.html :: header"></div>
+<div th:if="${!preview}" th:replace="usuario/template_usuario.html :: header"></div>
 
 <!-- Page Content -->
 <div class="container">
@@ -26,7 +27,8 @@
         SafeSales <small>Productos de la Tienda</small>
     </h1>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+
+        <li class="breadcrumb-item"><a th:href="@{/administrador}">Inicio</a></li>
         <li class="breadcrumb-item"><a th:href="@{/tiendas}">Tiendas</a></li>
         <li class="breadcrumb-item active" th:text="${tienda.nombre}">Nombre de la Tienda</li>
     </ol>

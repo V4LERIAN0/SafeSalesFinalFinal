@@ -15,10 +15,6 @@
 
 <div class="container">
   <!-- Breadcrumbs -->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a th:href="@{/usuario/tiendas}">Tiendas</a></li>
-    <li class="breadcrumb-item active" th:text="${tienda.nombre}">Nombre de la Tienda</li>
-  </ol>
   <h1 class="mt-4 mb-3" th:text="${tienda.nombre}">Nombre de la Tienda</h1>
   <p th:text="${tienda.descripcion}">Descripción de la Tienda</p>
 

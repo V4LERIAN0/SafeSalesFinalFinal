@@ -157,20 +157,25 @@ public class TiendaController {
 	}
 
 	@GetMapping("/{tiendaId}/productos")
-	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model, HttpSession session)
-			throws AccessDeniedException {
+	public String showTiendaProducts(@PathVariable("tiendaId") Integer tiendaId, Model model, HttpSession session) {
+		// Retrieve the store
 		Tienda tienda = tiendaService.get(tiendaId)
 				.orElseThrow(() -> new ResourceNotFoundException("Tienda not found"));
 
+		// Get the logged in user’s ID
 		int idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
+
+		// Set preview flag: if the logged-in user is the owner, they are previewing
 		boolean preview = tienda.getOwner().getId().equals(idUsuario);
 
+		// Add attributes to the model
 		model.addAttribute("tienda", tienda);
 		model.addAttribute("productos", tienda.getProductos());
-		model.addAttribute("preview", preview); // cierto si el usuario logeado es el dueño
+		model.addAttribute("preview", preview);
 
-		return "usuario/productos_tiendas";
+		return "tiendas/productos";  // This template will show the products
 	}
+
 
 
 	// In TiendaController.java

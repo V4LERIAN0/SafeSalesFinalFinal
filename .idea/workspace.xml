@@ -4,30 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="I'm tirado">
-      <change afterPath="$PROJECT_DIR$/images/Store-PNG-Pic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/product-icon-png-0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/dashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos.html" afterDir="false" />
+    <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="Ya casiiiii">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/AdministradorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/usuarios.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productos/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productos/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/TiendaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/TiendaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/detalleorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/detalleorden.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/administrador/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/productos.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/compras.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/compras.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productohome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productohome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos_tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos_tiendas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/resumenorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/resumenorden.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/template_usuario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/AdministradorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/AdministradorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/tiendas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/UsuarioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/usuarios.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/productos/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/productos/show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/carrito.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/curso/ecommerce/controller/TiendaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/detalleorden.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/detalleorden.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/administrador/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/tiendas/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tiendas/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/productohome.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/productohome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/productos_tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/productos_tiendas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/template_usuario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/usuario/tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/usuario/tiendas.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,28 +80,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.SpringEcommerceApplication.executor": "Run",
-    "git-widget-placeholder": "avances-casi-finales",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eliia/proyecto de inspiracion/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SpringEcommerceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;avances-casi-finales&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eliia/proyecto de inspiracion/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\eliia\proyecto de inspiracion\images" />
@@ -151,7 +152,8 @@
       <workItem from="1743807969000" duration="1168000" />
       <workItem from="1743815493904" duration="8460000" />
       <workItem from="1743824825485" duration="5451000" />
-      <workItem from="1743874620522" duration="16893000" />
+      <workItem from="1743874620522" duration="17169000" />
+      <workItem from="1743900469756" duration="6555000" />
     </task>
     <task id="LOCAL-00001" summary="Tiendas - productos">
       <option name="closed" value="true" />
@@ -201,7 +203,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743890581335</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Ya casiiiii">
+      <option name="closed" value="true" />
+      <created>1743895022686</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743895022687</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Ya casiiiii">
+      <option name="closed" value="true" />
+      <created>1743895054758</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1743895054758</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +240,7 @@
     <MESSAGE value="Tiendas - productos" />
     <MESSAGE value="Versión antes de cambios finales" />
     <MESSAGE value="I'm tirado" />
-    <option name="LAST_COMMIT_MESSAGE" value="I'm tirado" />
+    <MESSAGE value="Ya casiiiii" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ya casiiiii" />
   </component>
 </project>
