@@ -1,76 +1,278 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Spring eCommerce</title>
-
+  <title>Productos - SafeSales Admin</title>
 
   <!-- Bootstrap core CSS -->
-  <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link th:href="@{css/heroic-features.css}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --warning: #f8961e;
+      --danger: #e63946;
+      --light: #f8f9fa;
+      --dark: #212529;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7ff;
+      color: var(--dark);
+    }
+
+    /* Hero Section - IDÉNTICO AL EJEMPLO */
+    .admin-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 5rem 0 3rem 0;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 3rem;
+    }
+
+    .admin-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .breadcrumb-custom {
+      background-color: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      display: inline-flex;
+    }
+
+    .breadcrumb-custom a {
+      color: white;
+      opacity: 0.8;
+    }
+
+    .breadcrumb-custom .active {
+      color: white;
+      opacity: 1;
+    }
+
+    .breadcrumb-custom .breadcrumb-item+.breadcrumb-item::before {
+      color: white;
+      opacity: 0.5;
+    }
+
+    /* Content Styling */
+    .content-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Buttons - Estilo del ejemplo */
+    .btn-create {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-create:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-edit {
+      background-color: var(--warning);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-edit:hover {
+      background-color: #db7c0e;
+      transform: translateY(-2px);
+    }
+
+    .btn-delete {
+      background-color: var(--danger);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-delete:hover {
+      background-color: #c1121f;
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      margin-right: 0.5rem;
+    }
+
+    /* Table Styling */
+    .products-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .products-table thead th {
+      background-color: #f8f9fa;
+      color: var(--dark);
+      font-weight: 600;
+      padding: 1rem;
+      border-bottom: 2px solid #eee;
+    }
+
+    .products-table tbody tr {
+      transition: all 0.3s ease;
+    }
+
+    .products-table tbody tr:hover {
+      background-color: #f8fafc;
+    }
+
+    .products-table td {
+      padding: 1.2rem 1rem;
+      border-bottom: 1px solid #f1f3f5;
+      vertical-align: middle;
+    }
+
+    .products-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Empty State */
+    .empty-products {
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      color: #e2e8f0;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .admin-hero {
+        padding: 4rem 0 2rem 0;
+        border-radius: 0 0 20px 20px;
+      }
+
+      .admin-title {
+        font-size: 2rem;
+      }
+
+      .content-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Navigation -->
-   <div th:include="administrador/template_admin.html::header" ></div>
+<!-- Navigation -->
+<div th:include="administrador/template_admin.html::header"></div>
 
-<!-- Page Content -->
+<!-- Hero Section - IDÉNTICO AL EJEMPLO PROPORCIONADO -->
+<section class="admin-hero">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb-custom">
+        <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
+        <li class="breadcrumb-item active">Ver Productos</li>
+      </ol>
+    </nav>
+    <h1 class="admin-title">SafeSales</h1>
+    <p>Administra todos los productos del sistema</p>
+  </div>
+</section>
+
+<!-- Main Content -->
 <div class="container">
+  <div class="content-container">
+    <a class="btn btn-create" th:href="@{/productos/create}">
+      <i class="fas fa-plus btn-icon"></i> Crear Producto
+    </a>
 
-
-  <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">
-    SafeSales <small>Productos</small>
-  </h1>
-
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
-    <li class="breadcrumb-item active">Ver Productos</li>
-  </ol>
-
-  <a class="btn btn-primary" th:href="@{/productos/create}"> Crear Producto</a>
-  <h2>Productos</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Inventario</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Acción</th>
-        <th scope="col">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="producto:${productos}">
-        <td th:text="${producto.nombre}"></td>
-        <td th:text="${producto.descripcion}"></td>
-        <td th:text="${producto.cantidad}"></td>
-        <td th:text="${producto.precio}"></td>
-        <td><a  class="btn btn-warning" th:href="@{productos/edit/{id} (id=${producto.id}) }">Editar</a> </td>
-        <td><a  class="btn btn-danger" th:href="@{productos/delete/{id} (id=${producto.id}) }">Eliminar</a> </td>
-      </tr>       
-    </tbody>
-  </table>
-
+    <div class="table-responsive">
+      <table class="products-table">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Inventario</th>
+          <th>Precio</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto:${productos}">
+          <td th:text="${producto.nombre}"></td>
+          <td th:text="${producto.descripcion}"></td>
+          <td th:text="${producto.cantidad}"></td>
+          <td th:text="${'$' + #numbers.formatDecimal(producto.precio, 1, 2, 'COMMA')}"></td>
+          <td>
+            <a class="btn btn-edit" th:href="@{/productos/edit/{id}(id=${producto.id})}">
+              <i class="fas fa-edit btn-icon"></i> Editar
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-delete" th:href="@{/productos/delete/{id}(id=${producto.id})}"
+               onclick="return confirm('¿Estás seguro de eliminar este producto?');">
+              <i class="fas fa-trash-alt btn-icon"></i> Eliminar
+            </a>
+          </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(productos)}">
+          <td colspan="6" class="empty-products">
+            <div class="empty-icon">
+              <i class="fas fa-box-open"></i>
+            </div>
+            <h4>No hay productos registrados</h4>
+            <p class="text-muted">Comienza creando tu primer producto</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<!-- /.container -->
- <div th:include="administrador/template_admin.html::footer" ></div>
 
- <!-- Bootstrap core JavaScript -->
-    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
-    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Footer -->
+<div th:include="administrador/template_admin.html::footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
-
 </html>
