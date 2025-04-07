@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Todos los Productos</title>
+    <title>Resultados de Búsqueda</title>
     <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
 </head>
@@ -12,11 +12,13 @@
 <div class="container">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/usuario}">Inicio</a></li>
+        <li class="breadcrumb-item active">Resultados de la Búsqueda</li>
     </ol>
 
+    <h1 class="mt-4 mb-3">Resultados de la Búsqueda</h1>
 
-    <h1 class="mt-4 mb-3">Todos los Productos</h1>
     <div class="row">
+        <!-- Itera sobre los productos y muestra cada uno -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4"
              th:each="producto : ${productos}">
             <div class="card h-100">
@@ -32,12 +34,16 @@
                 </div>
             </div>
         </div>
+
+        <!-- Si no hay productos -->
         <div th:if="${#lists.isEmpty(productos)}" class="col-12">
             <p class="text-center">No hay productos para mostrar.</p>
         </div>
     </div>
 </div>
+
 <div th:include="usuario/template_usuario.html :: footer"></div>
+
 <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>

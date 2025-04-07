@@ -135,26 +135,27 @@
 
 <!-- Navigation -->
 <div th:fragment="header">
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+	<nav class="navbar navbar-expand-lg  fixed-top">
 		<div class="container">
 			<a class="navbar-brand" th:href="@{/usuario}">
 				<i class="fas fa-shield-alt mr-2"></i>SafeSales
 			</a>
+
+			<form class="form-inline search-form"  method="post" th:action="@{/buscar}">
+				<input class="form-control search-input" style="width: 650px" type="search"
+					   placeholder="Buscar productos..." aria-label="Search" name="nombre"
+					   autocomplete="off">
+				<button class="btn btn-primary btn-search" type="submit">Busar
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
-<!--			<form class="form-inline search-form" method="post" th:action="@{/search}">-->
-<!--				<input class="form-control search-input" type="search"-->
-<!--					   placeholder="Buscar productos..." aria-label="Search" name="nombre"-->
-<!--					   autocomplete="off">-->
-<!--				<button class="btn btn-primary btn-search" type="submit">-->
-<!--					<i class="fas fa-search"></i>-->
-<!--				</button>-->
-<!--			</form>-->
 
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
@@ -163,11 +164,12 @@
 							<i class="fas fa-shopping-cart"></i> Carrito
 						</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item ">
 						<a class="nav-link" th:href="@{/usuario/login}">
 							<i class="fas fa-sign-out-alt"></i> Salir
 						</a>
 					</li>
+
 				</ul>
 			</div>
 		</div>
@@ -188,14 +190,15 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<form class="form-inline search-form" method="post" th:action="@{/search}">
+			<form class="form-inline search-form" style="width: 650px" method="post" th:action="@{/buscar}">
 				<input class="form-control search-input" type="search"
-					   placeholder="Buscar productos..." aria-label="Search" name="nombre"
+					   placeholder="Buscar-productos..." aria-label="Search" name="nombre"
 					   autocomplete="off">
 				<button class="btn btn-primary btn-search" type="submit">
 					<i class="fas fa-search"></i>
 				</button>
 			</form>
+
 
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">

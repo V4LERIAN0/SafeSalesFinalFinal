@@ -26,9 +26,6 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/administrador")
 public class AdministradorController {
 
-//	@Autowired
-//	private ProductoService productoService;
-
 	@Autowired
 	private TiendaService tiendaService;
 	
