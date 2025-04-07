@@ -3,44 +3,346 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Tiendas Disponibles</title>
+    <title>Tiendas Disponibles - SafeSales</title>
+
     <!-- Bootstrap core CSS -->
     <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles -->
-    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .stores-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 5rem 0 3rem 0;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stores-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+
+        .stores-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stores-slogan {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .stores-slogan::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.5rem auto 0;
+        }
+
+        /* Store Cards */
+        .store-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .store-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.15);
+        }
+
+        .store-img-container {
+            height: 180px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+        }
+
+        .store-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .store-card:hover .store-img {
+            transform: scale(1.05);
+        }
+
+        .store-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .store-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 60px;
+        }
+
+        .store-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-custom {
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-flex;
+        }
+
+        /* Empty State */
+        .empty-stores {
+            text-align: center;
+            padding: 4rem 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stores-hero {
+                padding: 3rem 0 2rem 0;
+                border-radius: 0 0 20px 20px;
+            }
+            .stores-title {
+                font-size: 1.8rem;
+            }
+            .store-img-container {
+                height: 150px;
+            }
+        }
+
+        /* Option Cards como en home de usuario */
+        .option-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            height: 100%;
+            text-align: center;
+            padding-bottom: 1.5rem;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.2);
+        }
+
+        .option-img {
+            height: 180px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .option-card:hover .option-img {
+            transform: scale(1.05);
+        }
+
+        .option-body {
+            padding: 1.5rem;
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .option-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 0 1.5rem;
+        }
+
+        .btn-admin {
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-manage {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-manage:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-preview {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-preview:hover {
+            background-color: #f0f4ff;
+            transform: translateY(-2px);
+        }
+
+        .empty-stores {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-<!-- Header fragment (adjust the include as per your project) -->
+
+<!-- Header -->
 <div th:include="usuario/template_usuario.html :: header"></div>
 
-<div class="container">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a th:href="@{/usuario}">Inicio</a></li>
-        <li class="breadcrumb-item active">Tiendas</li>
-    </ol>
-    <h1 class="mt-4 mb-3">Tiendas Disponibles</h1>
-    <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="tienda : ${tiendas}">
-            <div class="card h-100">
-                <a th:href="@{/usuario/tiendas/{tiendaId}/productos(tiendaId=${tienda.id})}">
-                    <img class="card-img-top" th:src="@{'/images/' + ${tienda.imagen}}" alt="Imagen de la tienda">
-                </a>
-                <div class="card-body">
-                    <h4 class="card-title" th:text="${tienda.nombre}">Nombre de la Tienda</h4>
-                    <p class="card-text" th:text="${tienda.descripcion}">Descripción</p>
+<!-- Hero Section -->
+<section class="stores-hero">
+    <div class="container text-center position-relative">
+        <h1 class="stores-title">Tiendas Disponibles</h1>
+        <p class="stores-slogan">Descubre nuestras tiendas asociadas</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="container mb-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom">
+            <li class="breadcrumb-item"><a th:href="@{/usuario}">Inicio</a></li>
+            <li class="breadcrumb-item active">Tiendas</li>
+        </ol>
+    </nav>
+
+    <div class="container">
+        <div th:if="${not #lists.isEmpty(tiendas)}" class="row">
+            <div class="col-lg-3 col-md-6 mb-4" th:each="tienda: ${tiendas}">
+                <div class="option-card">
+                    <img class="option-img" th:src="@{/images/{img} (img=${tienda.imagen})}" alt="Imagen de tienda">
+                    <div class="option-body">
+                        <h5 class="option-title" th:text="${tienda.nombre}"></h5>
+                    </div>
+                    <div class="option-footer">
+                        <a th:href="@{/usuario/tiendas/{id}/productos(id=${tienda.id})}" class="btn btn-admin btn-preview">
+                            <i class="fas fa-eye mr-2"></i> Ver tienda
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Empty State -->
         <div th:if="${#lists.isEmpty(tiendas)}" class="col-12">
-            <p class="text-center">No hay tiendas disponibles.</p>
+            <div class="empty-stores">
+                <div class="empty-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h4>No hay tiendas disponibles</h4>
+                <p class="text-muted">Pronto tendremos nuevas tiendas para ti</p>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Footer fragment -->
+<!-- Footer -->
 <div th:include="usuario/template_usuario.html :: footer"></div>
+
 <!-- Bootstrap JavaScript -->
 <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script>
+    // Fallback para imágenes rotas
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                if(this.classList.contains('store-img')) {
+                    this.src = '/images/default-store.png';
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

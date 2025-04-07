@@ -3,46 +3,253 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title th:text="${tienda.nombre} + ' - Productos'">Productos de la Tienda</title>
+  <title th:text="${tienda.nombre} + ' - SafeSales'">Productos - SafeSales</title>
+
   <!-- Bootstrap core CSS -->
   <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-  <!-- Custom styles -->
-  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --accent: #4cc9f0;
+      --light: #f8f9fa;
+      --dark: #212529;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: var(--dark);
+    }
+
+    /* Hero Section Mejorada */
+    .store-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 5rem 0 3rem 0;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
+
+    .store-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .store-slogan {
+      font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .store-slogan::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      margin: 0.5rem auto 0;
+    }
+
+    .store-description {
+      opacity: 0.85;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Product Cards */
+    .product-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(67, 97, 238, 0.15);
+    }
+
+    .product-img-container {
+      height: 200px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.05);
+    }
+
+    .product-title {
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-description {
+      color: #6c757d;
+      font-size: 0.9rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 40px;
+    }
+
+    .product-price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .product-footer {
+      background: white;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Empty State */
+    .empty-products {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      color: #e2e8f0;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .store-hero {
+        padding: 3rem 0 2rem 0;
+        border-radius: 0 0 20px 20px;
+      }
+      .store-title {
+        font-size: 1.8rem;
+      }
+      .product-img-container {
+        height: 160px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- Header fragment -->
+
+<!-- Header -->
 <div th:include="usuario/template_usuario.html :: header"></div>
 
-<div class="container">
-  <!-- Breadcrumbs -->
-  <h1 class="mt-4 mb-3" th:text="${tienda.nombre}">Nombre de la Tienda</h1>
-  <p th:text="${tienda.descripcion}">Descripción de la Tienda</p>
+<!-- Store Hero Section Mejorada -->
+<section class="store-hero">
+  <div class="container text-center position-relative">
+    <h1 class="store-title" th:text="${tienda.nombre}">Nombre Tienda</h1>
+    <p class="store-slogan">Descubre productos de calidad</p>
+    <p class="store-description" th:text="${tienda.descripcion}">Descripción de la tienda que muestra su propuesta de valor y especialidad</p>
+  </div>
+</section>
 
+<!-- Product Grid -->
+<div class="container mb-5">
   <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="producto : ${productos}">
-      <div class="card h-100">
-        <a th:href="@{/productohome/{id}(id=${producto.id})}">
-          <img class="card-img-top" th:src="@{'/images/' + ${producto.imagen}}" alt="Imagen del producto">
+    <!-- Product Cards -->
+    <div class="col-xl-3 col-lg-4 col-md-6 mb-4" th:each="producto : ${productos}">
+      <div class="card product-card h-100">
+        <a th:href="@{/productohome/{id}(id=${producto.id})}" class="text-decoration-none">
+          <div class="product-img-container">
+            <img class="product-img" th:src="@{'/images/' + ${producto.imagen}}" alt="Producto" onerror="this.src='/images/default-product.png'">
+          </div>
+          <div class="card-body">
+            <h4 class="product-title" th:text="${producto.nombre}">Nombre Producto</h4>
+            <p class="product-description" th:text="${producto.descripcion}">Descripción del producto</p>
+          </div>
+          <div class="card-footer product-footer">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="product-price" th:text="${'$' + #numbers.formatDecimal(producto.precio, 1, 2, 'COMMA')}">$0.00</span>
+              <button class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
         </a>
-        <div class="card-body">
-          <h4 class="card-title" th:text="${producto.nombre}">Nombre del Producto</h4>
-          <p class="card-text" th:text="${producto.descripcion}">Descripción del Producto</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted" th:text="${producto.precio}">Precio</small>
-        </div>
       </div>
     </div>
+
+    <!-- Empty State -->
     <div th:if="${#lists.isEmpty(productos)}" class="col-12">
-      <p class="text-center">No hay productos en esta tienda.</p>
+      <div class="empty-products">
+        <div class="empty-icon">
+          <i class="fas fa-box-open"></i>
+        </div>
+        <h4>No hay productos disponibles</h4>
+        <p class="text-muted">Pronto tendremos novedades para ti</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Footer fragment -->
+<!-- Footer -->
 <div th:include="usuario/template_usuario.html :: footer"></div>
+
 <!-- Bootstrap JavaScript -->
 <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script>
+  // Fallback para imágenes rotas
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('img').forEach(img => {
+      img.onerror = function() {
+        this.src = '/images/default-product.png';
+      }
+    });
+  });
+</script>
 </body>
 </html>

@@ -1,8 +1,9 @@
-package com.curso.ecommerce.service;
+package com.curso.ecommerce.service.impl;
 
 
 import com.curso.ecommerce.model.Tienda;
 import com.curso.ecommerce.repository.ITiendaRepository;
+import com.curso.ecommerce.service.TiendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

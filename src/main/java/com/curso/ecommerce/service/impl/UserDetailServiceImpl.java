@@ -1,9 +1,10 @@
-package com.curso.ecommerce.service;
+package com.curso.ecommerce.service.impl;
 
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import com.curso.ecommerce.service.IUsuarioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -292,9 +292,9 @@
 						<tbody>
 						<tr th:each="dorden:${cart}">
 							<td class="product-name" th:text="${dorden.nombre}"></td>
-							<td class="product-price" th:text="${'S/ ' + dorden.precio}"></td>
+							<td class="product-price" th:text="${'$ ' + dorden.precio}"></td>
 							<td class="product-quantity" th:text="${dorden.cantidad}"></td>
-							<td class="product-total" th:text="${'S/ ' + dorden.total}"></td>
+							<td class="product-total" th:text="${'$ ' + dorden.total}"></td>
 							<td>
 								<a th:href="@{/delete/cart/{id} (id=${dorden.producto.id})}" class="btn btn-remove">
 									<i class="fas fa-trash-alt"></i>
@@ -311,7 +311,7 @@
 					<h3 class="summary-title">Resumen de Compra</h3>
 					<div class="d-flex justify-content-between align-items-center mb-4">
 						<span class="font-weight-bold">Subtotal:</span>
-						<span class="subtotal" th:text="${'S/ ' + orden.total}"></span>
+						<span class="subtotal" th:text="${'$ ' + orden.total}"></span>
 					</div>
 					<a th:href="@{/order}" class="btn btn-checkout">
 						Proceder al Pago <i class="fas fa-arrow-right ml-2"></i>

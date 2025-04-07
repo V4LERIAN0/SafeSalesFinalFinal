@@ -17,12 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.curso.ecommerce.model.Producto;
-import com.curso.ecommerce.model.Tienda;
 import com.curso.ecommerce.model.Usuario;
 import com.curso.ecommerce.service.IUsuarioService;
 import com.curso.ecommerce.service.ProductoService;
 import com.curso.ecommerce.service.UploadFileService;
-import com.curso.ecommerce.service.TiendaServiceImpl;
+import com.curso.ecommerce.service.impl.TiendaServiceImpl;
 
 @Controller
 @RequestMapping("/productos")
