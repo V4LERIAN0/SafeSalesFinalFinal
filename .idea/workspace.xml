@@ -4,14 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="se me olvido agragar esta vista ajaajj">
+    <list default="true" id="ce50cae8-1291-4665-b443-be4dfe604519" name="Changes" comment="una mas">
       <change afterPath="$PROJECT_DIR$/images/images (2).jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/images/naturaleza.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/controller/ProductoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/DetalleOrdenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/impl/DetalleOrdenServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/OrdenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/impl/OrdenServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/ProductoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/impl/ProductoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/TiendaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/impl/TiendaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/UserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/impl/UserDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/UsuarioServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/curso/ecommerce/service/impl/UsuarioServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productos/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productos/show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tiendas/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tiendas/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/carrito.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productohome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productohome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos_tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/productos_tiendas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario/tiendas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario/tiendas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/productos/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/productos/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +49,12 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/V4LERIAN0/SafeSalesFinalFinal.git",
-    "accountId": "541af1cd-82ab-4eea-8686-d80b944c3ed9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/V4LERIAN0/SafeSalesFinalFinal.git&quot;,
+    &quot;accountId&quot;: &quot;541af1cd-82ab-4eea-8686-d80b944c3ed9&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -76,7 +87,7 @@
     &quot;git-widget-placeholder&quot;: &quot;avances-casi-finales&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eliia/proyecto de inspiracion/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex/Desktop/ultimo intento/proyecto de inspiracion&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -137,7 +148,10 @@
       <workItem from="1743824825485" duration="5451000" />
       <workItem from="1743874620522" duration="17169000" />
       <workItem from="1743900469756" duration="6889000" />
-      <workItem from="1743918091892" duration="1290000" />
+      <workItem from="1743918091892" duration="1558000" />
+      <workItem from="1743968728172" duration="2121000" />
+      <workItem from="1743971151576" duration="698000" />
+      <workItem from="1743987411044" duration="7159000" />
     </task>
     <task id="LOCAL-00001" summary="Tiendas - productos">
       <option name="closed" value="true" />
@@ -227,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743917727267</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="una mas">
+      <option name="closed" value="true" />
+      <created>1743919626978</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1743919626978</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +273,7 @@
     <MESSAGE value="Ya casiiiii" />
     <MESSAGE value="Actualizacion de las vistas" />
     <MESSAGE value="se me olvido agragar esta vista ajaajj" />
-    <option name="LAST_COMMIT_MESSAGE" value="se me olvido agragar esta vista ajaajj" />
+    <MESSAGE value="una mas" />
+    <option name="LAST_COMMIT_MESSAGE" value="una mas" />
   </component>
 </project>
